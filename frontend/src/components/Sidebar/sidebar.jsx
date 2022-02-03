@@ -3,19 +3,20 @@ import swim from '../../assets/swim.svg'
 import zen from '../../assets/zen.svg'
 import cycle from '../../assets/cycle.svg'
 
-import Icon from '../Icon/icon'
+import NavButton from '../Sidebar/NavButtons/navbutton'
 
 function Sidebar(){
+    
     const icons = [dumbbells, swim, zen, cycle]
-
+    
     return(
-        <>
+        <section className="sidebar">
             <p>sidebar</p>
-            {icons.map((icon, index)=>(
-                <Icon key={index} svg={icon}/>
-            ))}
-            <p>Copiryght, SportSee 2020</p>
-        </>
+            
+            <NavButton svgCollection={icons}/>
+            
+            <p>Copyright, SportSee 2020</p>
+        </section>
     )
 }
 

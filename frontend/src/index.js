@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header/header';
-import Display from './components/Display/display';
+import Dashboard from './components/Dashboard/dashboard';
 import Sidebar from './components/Sidebar/sidebar';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <Header />
-    <Display />
+    <Dashboard />
     <Sidebar />
   </React.StrictMode>,
   document.getElementById('root')

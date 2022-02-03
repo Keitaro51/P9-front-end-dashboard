@@ -1,9 +1,9 @@
 import logo from '../../assets/logo.svg'
 
 function Header(){
+    
     return(
         <header>
-            <p>header</p>
             <img src={logo} alt="logo de sportsee"/>
             <nav>
                 <ul>
