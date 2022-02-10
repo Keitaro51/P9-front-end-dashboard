@@ -1,6 +1,6 @@
 function PieChart(){
     return(
-        <div>PieChart HERE</div>
+        <div className="pieChart">PieChart HERE</div>
     )
 }
 

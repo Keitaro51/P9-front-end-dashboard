@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getAverageSession } from '../../../services/getAPI'
+import { getAverageSession } from '../../../services/getData'
 
 function LineChart({ id }){
 
@@ -13,7 +13,7 @@ function LineChart({ id }){
         fetchUserAverageSession()
     },[id])
     
-    console.log(userAverageSession)
+    //console.log(userAverageSession)
 
     if(!userAverageSession){
         return(
@@ -22,9 +22,7 @@ function LineChart({ id }){
     }
     
     return(
-        <>
-            <div>LineChart HERE { id }/ {userAverageSession.data.userId}</div>
-        </>
+        <div className="lineChart">LineChart HERE { id }/ {userAverageSession.data.userId}</div>
     )
 }
 

@@ -5,11 +5,14 @@ import Dashboard from './components/Dashboard/dashboard';
 import Sidebar from './components/Sidebar/sidebar';
 import reportWebVitals from './reportWebVitals';
 
+import './style/reset.css'
+import './style/main.css'
+
 ReactDOM.render(
   <React.StrictMode>
     <Header />
-    <Dashboard />
     <Sidebar />
+    <Dashboard />
   </React.StrictMode>,
   document.getElementById('root')
 );
