@@ -52,7 +52,7 @@ const DataContainer = styled.div`
     "LineChart RadarChart PieChart Icon";
     
     .lineChart { grid-area: LineChart;background-color:#FBFBFB; border-radius: 5px; }
-    .icon { grid-area: Icon;background-color:yellow }
+    .icon { grid-area: Icon;}
     .barChart { grid-area: BarChart;background-color:#FBFBFB; border-radius: 5px; }
     .radarChart { grid-area: RadarChart;background-color:#FBFBFB; border-radius: 5px; }
     .pieChart { grid-area: PieChart;background-color:#FBFBFB; border-radius: 5px; }
