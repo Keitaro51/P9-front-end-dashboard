@@ -19,7 +19,6 @@ const Section =  styled.section`
 
 const StyledParagraph =  styled.p`
     color: ${colors.secondary};
-    
     transform: rotate(-90deg);
     font-family: 'roboto', sans-serif;
     font-weight: 500;

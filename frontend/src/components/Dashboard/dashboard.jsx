@@ -60,8 +60,6 @@ const DataContainer = styled.div`
 
 function Dashboard(){
     
-    
-
     const [userData, setUserData] = useState(null)
     //TODO function dans useEffect?
     useEffect(()=>{
@@ -89,7 +87,7 @@ function Dashboard(){
                 <BarChart id={userData.id}/>
                 <LineChart id={userData.id}/>
                 <RadarChart id={userData.id}/>
-                <PieChart />
+                <PieChart data={[{'score': userData.score}, {'score': 1- userData.score}]}/>
                 <Nutrients data={userData.keyData}/>
             </DataContainer>
         </DashboardContainer>
