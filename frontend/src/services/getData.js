@@ -1,36 +1,67 @@
-import { URL_GETUSER, DATA_SRC } from '../config'
+import { USER_TEST_ID as id, URL_GETUSER, DATA_SRC } from '../config'
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../mock/data' 
 
-import MainData from '../models/MainData'
+import { get } from '../helper/fetchWrapper'
 
-import axios from 'axios'
-
-const getUser = (id) => {
+/**
+ * get user main data
+ *
+ * @return  {(object|promise)}  mock or API data
+ */
+const getUser = () => {
     if(DATA_SRC === 'API'){
-        return axios.get(`${URL_GETUSER}/${id}`).then((res)=> res.data.data).catch(error => console.log(error))
+        return get(`${URL_GETUSER}/${id}`)
     }
-    return console.log(USER_MAIN_DATA)
+    return findById(USER_MAIN_DATA,'id')
 }
 
-const getActivity = (id) => {
+/**
+ * get user activity data
+ *
+ * @return  {(object|promise)}  mock or API data
+ */
+const getActivity = () => {
     if(DATA_SRC === 'API'){
-        return axios.get(`${URL_GETUSER}/${id}/activity`).then((res)=> res.data.data).catch(error => console.log(error))
+        return get(`${URL_GETUSER}/${id}/activity`)
     }
-    return console.log(USER_ACTIVITY)
+    return findById(USER_ACTIVITY,'userId')
 }
 
-const getAverageSession = (id) => {
+/**
+ * get user average sessions data
+ *
+ * @return  {(object|promise)}  mock or API data
+ */
+const getAverageSession = () => {
     if(DATA_SRC === 'API'){
-        return axios.get(`${URL_GETUSER}/${id}/average-sessions`).then((res)=> res.data).catch(error => console.log(error))
+        return get(`${URL_GETUSER}/${id}/average-sessions`)
     }
-    return console.log(USER_AVERAGE_SESSIONS)
+    return findById(USER_AVERAGE_SESSIONS,'userId')
 }
 
-const getPerformance = (id) => {
+/**
+ * get user performance data
+ *
+ * @return  {(object|promise)}  mock or API data
+ */
+const getPerformance = () => {
     if(DATA_SRC === 'API'){      
-        return axios.get(`${URL_GETUSER}/${id}/performance`).then((res)=> res.data.data).catch(error => console.log(error))
+        return get(`${URL_GETUSER}/${id}/performance`) 
     }
-    return console.log(USER_PERFORMANCE)
+    return findById(USER_PERFORMANCE,'userId')
+}
+
+/**
+ * find mock data by user id
+ *
+ * @param   {Array.<Object>}  source  [mock data source ]
+ * @param   {string}  key     [key value for user id]
+ * @example
+ * findById(USER_PERFORMANCE,'userId')
+ * @return  {object}          mock data for single user
+ */
+const findById = (source, key) => {
+    return source.find((data) => data[key] === id)
 }
 
 export {
