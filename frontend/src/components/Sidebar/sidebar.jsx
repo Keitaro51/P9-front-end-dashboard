@@ -11,6 +11,7 @@ import styled from 'styled-components'
 const Section =  styled.section`
     background: ${colors.primary};
     height: calc(100vh - 91px);
+    width: 117px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

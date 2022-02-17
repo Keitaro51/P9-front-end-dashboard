@@ -1,3 +1,4 @@
+import propTypes from "prop-types"
 import styled from 'styled-components'
 
 import { translation } from '../../../utils/translation'
@@ -9,6 +10,7 @@ import cheeseburger from '../../../assets/cheeseburger.svg'
 
 const Container =  styled.div`
     width: 258px;
+    heigth: 125px;
 `
 
 const Card =  styled.figure`
@@ -41,10 +43,16 @@ const ImageContainer =  styled.div`
     border-radius: 6px;
     ${({backgroundColor}) => `background: ${backgroundColor};`}
 `
-
+/**
+ * Component for showing nutrient detail
+ * @component
+ * @example
+ * const data = {calorieCount: 2500, proteinCount: 90, carbohydrateCount: 150, lipidCount: 120}
+ * < Nutrients data={data} />
+ */
 function Nutrients({data}){
     
-    const icons = [
+    const iconCollection = [
         {'name':'calorieCount','svg':energy, 'backgroundColor':"rgba(255,0,0,0.1)", 'unit':'kCal'},
         {'name':'proteinCount','svg':chicken, 'backgroundColor':"rgba(74,184,255,0.1)", 'unit':'g'},
         {'name':'carbohydrateCount','svg':apple, 'backgroundColor':"rgba(249,207,35,0.1)", 'unit':'g'},
@@ -52,18 +60,50 @@ function Nutrients({data}){
     ]
     
     return(
-        <Container className="icon">
-            {icons.map((icon, index)=>
+        <Container className="nutrients">
+            {iconCollection.map((icon, index)=>
                 <Card key={index}>
                     <ImageContainer backgroundColor={icon.backgroundColor} ><img src={icon.svg} alt=""/></ImageContainer>
                     <figcaption>
-                        <p >{data[icon.name]}{icon.unit}</p>
+                        <p>{formatData(data[icon.name])}{icon.unit}</p>
                         <h1>{translation.nutrient[icon.name]}</h1> 
                     </figcaption>
                 </Card>
             )}
         </Container>
     )
+}
+
+/**
+ * add a comma after thousand digit (ex: 2,500Kcal/j) - hypothesis : value >= 10000 Kcal/j are never reached
+ * @param {number} data - nutrient value
+ * @returns {(number|string)} original data or data with comma after thousand digit
+ */
+function formatData(data){
+    if(data.toString().length > 3){
+        const splitData = data.toString().split('')
+        splitData.splice(1, 0, ",").join('')
+        return splitData.join('')
+    }   
+    return data
+}
+
+Nutrients.propTypes = {
+    data: propTypes.shape({
+        calorieCount: propTypes.number,
+        carbohydrateCount: propTypes.number,
+        lipidCount: propTypes.number,
+        proteinCount: propTypes.number
+      })
+}
+
+Nutrients.defaultProps  = {
+    data: propTypes.shape({
+        calorieCount: 0,
+        carbohydrateCount: 0,
+        lipidCount: 0,
+        proteinCount: 0
+      })
 }
 
 export default Nutrients

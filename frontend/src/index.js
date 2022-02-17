@@ -11,8 +11,10 @@ import './style/main.css'
 ReactDOM.render(
   <React.StrictMode>
     <Header />
-    <Sidebar />
-    <Dashboard />
+    <main>
+      <Sidebar />
+      <Dashboard />
+    </main>
   </React.StrictMode>,
   document.getElementById('root')
 );

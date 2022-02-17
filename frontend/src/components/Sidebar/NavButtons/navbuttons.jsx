@@ -1,3 +1,4 @@
+import propTypes from "prop-types"
 import styled from 'styled-components'
 
 const StyledButton =  styled.div`
@@ -25,6 +26,10 @@ function NavButtons({svgCollection}){
             )}
         </nav>
     )
+}
+
+NavButtons.propTypes = {
+    svgCollection: propTypes.arrayOf(propTypes.string)
 }
 
 export default NavButtons

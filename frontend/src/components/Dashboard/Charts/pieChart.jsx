@@ -1,10 +1,11 @@
+import propTypes from "prop-types"
 import { PieChart as Chart, Pie, Cell,  ResponsiveContainer } from 'recharts';
   
 function PieChart({ data }){
-   
+  
     return(
         <div className="pieChart">
-          <Chart width={263} height={271} >
+          <Chart width={258} height={253} >
             <Pie
               data={data}
               innerRadius={60}
@@ -23,6 +24,14 @@ function PieChart({ data }){
           </Chart>
         </div>
     )
+}
+
+PieChart.propTypes = {
+  data: propTypes.arrayOf(
+    propTypes.shape({
+      score: propTypes.number,
+    }),
+  )
 }
 
 export default PieChart

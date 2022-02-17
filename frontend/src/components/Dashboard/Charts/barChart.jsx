@@ -12,17 +12,21 @@ const Title =  styled.h1`
     padding:10px;
 `
 
-function BarChart({ id }){
+/**
+ * 
+ * @component 
+ */
+function BarChart(){
     
     const [userActivity, setUserActivity] = useState(null)
 
     useEffect(()=>{
         const fetchUserActivity = async () => {
-            const data = await getActivity(id)
+            const data = await getActivity()
             setUserActivity(data.sessions)
         }
         fetchUserActivity()
-    },[id])
+    },[])
     
     if(!userActivity){
         return(
@@ -38,7 +42,7 @@ function BarChart({ id }){
       };
 
     const tooltipStyle = {background: "#E60000", color: "white", lineHeight:"24px", padding:"17px"}
-
+    
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
           return (
@@ -51,13 +55,12 @@ function BarChart({ id }){
         return null;
     }
 
-
     return(
         //TODO ResponsiveContainer
         <div className="barChart"> 
             <Title>Activité quotidienne</Title>
             <Chart width={835} 
-                height={320} 
+                height={290} 
                 data={userActivity} 
                 margin={{
                 top: 5,
@@ -65,12 +68,13 @@ function BarChart({ id }){
                 left: 20,
                 bottom: 5,
                 }}
-                barSize={7}>
+                barSize={7}
+                >
                 <Legend verticalAlign='top' align="right" iconType="circle" iconSize="8" formatter={renderLegendText} wrapperStyle={{top: "-16px", right:"48px"}}/>
                 <CartesianGrid strokeDasharray="2 2" vertical={false} />
-                <XAxis dataKey="day" tickFormatter={(label) => `${label.slice(8)}`} tickLine={false}/>
-                <YAxis orientation="right" axisLine={false} tickLine={false}/>
-                <Tooltip content={<CustomTooltip/>} wrapperStyle={tooltipStyle}/>
+                <XAxis axisLine={{stroke: '#DEDEDE', strokeWidth: 1}} dataKey="day" tick={{ fill: '#9B9EAC' }} tickFormatter={(label) => `${label.slice(8)}`} tickLine={false}/ >
+                <YAxis tick={{ fill: '#9B9EAC' }} orientation="right" axisLine={false} tickLine={false}/>
+                <Tooltip cursor={{ fill: 'rgba(196, 196, 196, 0.5)'}} content={<CustomTooltip/>} wrapperStyle={tooltipStyle}/>
                 <Bar dataKey="kilogram" fill="#282D30" />
                 <Bar dataKey="calories" fill="#E60000" />
             </Chart>

@@ -5,13 +5,13 @@ import { getPerformance } from '../../../services/getData'
 
 import { translation } from '../../../utils/translation';
 
-function RadarChart({ id }){
+function RadarChart(){
 
     const [userPerformance, setUserPerformance] = useState(null)
     
     useEffect(()=>{
         const fetchUserPerformances = async () => {
-            const result = await getPerformance(id)
+            const result = await getPerformance()
             transformData(result)
             setUserPerformance(result.data)
         }
@@ -23,7 +23,7 @@ function RadarChart({ id }){
         }
                
         fetchUserPerformances()
-    },[id])
+    },[])
          
     if(!userPerformance){
         return(
@@ -32,8 +32,8 @@ function RadarChart({ id }){
     }
 
     return(
-        <div className="radarChart"style={{background: "#282D30"}}>
-            <Chart background= "#FF0101" startAngle="-150" endAngle="210" outerRadius={90} width={263} height={271} data={userPerformance} fill="#FFF">
+        <div className="radarChart" style={{background: "#282D30"}}>
+            <Chart background= "#FF0101" startAngle="-150" endAngle="210" outerRadius={90} width={258} height={263} data={userPerformance} fill="#FFF">
                 <PolarGrid />
                 <PolarAngleAxis dataKey="kind"  />
                 <Radar dataKey="value"  fill="#FF0101" fillOpacity={0.7} />
