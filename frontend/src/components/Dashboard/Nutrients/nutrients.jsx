@@ -21,8 +21,9 @@ background-color: #FBFBFB;
 border-radius: 5px;
 align-items: center;
     & p, h1{
-        font-family: 'roboto', sans-serif;
+        
         margin-left: 24px;
+        color: #282D30;
     }
     & h1{
         font-size: 14px;
@@ -32,6 +33,12 @@ align-items: center;
         font-size: 20px;
         font-weight: 700;
     }
+`
+const CardCaption = styled.figcaption`
+    display: flex;
+    height: 60px;
+    flex-direction: column;
+    justify-content: space-around;
 `
 
 const ImageContainer =  styled.div`
@@ -64,10 +71,10 @@ function Nutrients({data}){
             {iconCollection.map((icon, index)=>
                 <Card key={index}>
                     <ImageContainer backgroundColor={icon.backgroundColor} ><img src={icon.svg} alt=""/></ImageContainer>
-                    <figcaption>
+                    <CardCaption>
                         <p>{formatData(data[icon.name])}{icon.unit}</p>
                         <h1>{translation.nutrient[icon.name]}</h1> 
-                    </figcaption>
+                    </CardCaption>
                 </Card>
             )}
         </Container>

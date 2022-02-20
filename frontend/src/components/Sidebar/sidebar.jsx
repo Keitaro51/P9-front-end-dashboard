@@ -21,12 +21,16 @@ const Section =  styled.section`
 const StyledParagraph =  styled.p`
     color: ${colors.secondary};
     transform: rotate(-90deg);
-    font-family: 'roboto', sans-serif;
     font-weight: 500;
     font-size: 12px;
     margin-bottom: 128px;
+    width: max-content
 `
-
+/**
+ * Component for showing sidebar nav menu
+ * @component
+ * 
+ */
 function Sidebar(){
     
     const icons = [dumbbellsIcon, swimIcon, zenIcon, cycleIcon]

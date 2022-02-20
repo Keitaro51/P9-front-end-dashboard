@@ -6,21 +6,24 @@ import { BarChart as Chart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, R
 import { getActivity } from '../../../services/getData'
 
 const Title =  styled.h1`
-    font-family: 'roboto', sans-serif;
     font-weight: 500;
     font-size: 15px;
     padding:10px;
 `
-
 /**
+ * Component for showing user activity, represented with bar chart
+ * @component
  * 
- * @component 
  */
 function BarChart(){
     
     const [userActivity, setUserActivity] = useState(null)
 
     useEffect(()=>{
+        /**
+         * fetch user info from USER_ACTIVITY and store it into component state
+         * @async
+         */
         const fetchUserActivity = async () => {
             const data = await getActivity()
             setUserActivity(data.sessions)
@@ -33,9 +36,14 @@ function BarChart(){
             <div>LOADING ACTIVITY CHART</div>
         )
     }
-
-    const renderLegendText = (value) => {
-        if(value === "kilogram"){
+    
+    /**
+     * Return french translation depending on unit for chart legend
+     * @param {string} unit unitée de mesure 
+     * @returns {HTMLElement} 
+     */
+    const renderLegendText = (unit) => {
+        if(unit === "kilogram"){
             return <span> Poids (kg)</span>;
         }
         return <span> Calories brûlées (kCal)</span>;
@@ -43,6 +51,11 @@ function BarChart(){
 
     const tooltipStyle = {background: "#E60000", color: "white", lineHeight:"24px", padding:"17px"}
     
+    /**
+     * Custom tooltip on chart mousehover
+     * @param {{active:boolean, payload:array}} [] tooltip state
+     * @returns {HTMLElement|null} 
+     */
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
           return (

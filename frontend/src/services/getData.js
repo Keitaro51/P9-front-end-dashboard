@@ -4,7 +4,7 @@ import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE 
 import { get } from '../helper/fetchWrapper'
 
 /**
- * get user main data
+ * get user main data from api or mock data
  *
  * @return  {(object|promise)}  mock or API data
  */
@@ -16,7 +16,7 @@ const getUser = () => {
 }
 
 /**
- * get user activity data
+ * get user activity data from api or mock data
  *
  * @return  {(object|promise)}  mock or API data
  */
@@ -28,7 +28,7 @@ const getActivity = () => {
 }
 
 /**
- * get user average sessions data
+ * get user average sessions data from api or mock data
  *
  * @return  {(object|promise)}  mock or API data
  */
@@ -40,7 +40,7 @@ const getAverageSession = () => {
 }
 
 /**
- * get user performance data
+ * get user performance data from api or mock data
  *
  * @return  {(object|promise)}  mock or API data
  */

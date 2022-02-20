@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
 }
 main{
     display: flex;

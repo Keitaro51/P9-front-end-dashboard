@@ -1,52 +1,34 @@
-# Project 9 - Front-end Dashboard
+![createBy](https://img.shields.io/static/v1.svg?label=CREATE%20BY&message=ROMAIN%20CHARLOT&color=success)
+![createBy](https://img.shields.io/static/v1.svg?label=MADE%20WITH&message=React.js&logo=React&color=blue)
+![createBy](https://img.shields.io/static/v1.svg?label=MADE%20WITH&message=Javascript.js&logo=Javascript&color=yellow)
+
+# Project OC - Front-end React Dashboard
 
 This repo contains all the source code to run the micro API for the sports analytics dashboard SportSee.
+____
+## I. USING API DATA
 
-## 1. General information
-
-To start this project, you are free to use Docker or not. In this documentation, we will see several methods to launch the project easily.
-
-## 2. Project (**without Docker**)
-
-### 2.1 Prerequisites
+### 1. Prerequisites
 
 - [NodeJS (**version 12.18**)](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com/)
 
 If you are working with several versions of NodeJS, we recommend you install [nvm](https://github.com/nvm-sh/nvm). This tool will allow you to easily manage your NodeJS versions.
 
-### 2.2 Launching the project
+### 2. Installing API
 
-- Fork the repository
+- Fork this repository
 - Clone it on your computer.
 - The `yarn` command will allow you to install the dependencies.
-- The `yarn dev` command will allow you to run the micro API.
 
+### 3. Launch API
 
-## 3. Project (**with Docker**)
+- The `yarn start` command will allow you to run the micro API.
+- Server will run on port 3000, so frontend app will have to run on another port (mostly 3001)
 
-### 2.1 Prerequisites
+### 4. Endpoints
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop)
-
-### 2.2 Starting the project
-
-- The `docker image build --no-cache -t micro-api .` command will allow you to build your image.
-- The `docker container run --name micro-api -p 3000:3000 -dt micro-api yarn` command will allow you to create your Docker container and run your image on port 3000.
-- The `docker container stop micro-api` command will allow you to stop your micro-api.
-- The `docker container rm micro-api` command will allow you to delete your micro-api container.
-
-### 2.3 Vscode and container remotes
-
-Finally, if you have VsCode, you can easily launch your project in a docker environment.
-
-You will need the [Remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack). Once you have this extension installed, just click on the `Reopen in Container` button.
-
-Once in the container, run the `yarn dev` command.
-
-## 4. Endpoints
-
-### 4.1 Possible endpoints
+#### 4.1 Possible endpoints
 
 This project includes four endpoints that you will be able to use: 
 
@@ -58,7 +40,29 @@ This project includes four endpoints that you will be able to use:
 
 **Warning, currently only two users have been mocked. They have userId 12 and 18 respectively.**
 
-### 4.2 Examples of queries
+#### 4.2 Examples of queries
 
 - `http://localhost:3000/user/12/performance` - Retrieves the performance of the user with id 12
 - `http://localhost:3000/user/18` - Retrieves user 18's main information.
+____
+## II. USING MOCK DATA
+
+It's possible to run app without api, with mock data. 
+
+To switch between api and mock data, just toggle `DATA_SRC` value into `../frontend/src/config.js` folder
+____
+## III. GETTING STARTED WITH SPORTSEE
+
+- Run your terminal on frontend sub-folder 
+- `npm install` command will allow you to install the front dependencies
+
+### Available Scripts
+
+In the project directory, you can run:
+
+#### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser (or `port 3001` if used with api).
+
+The page will reload when you make changes.

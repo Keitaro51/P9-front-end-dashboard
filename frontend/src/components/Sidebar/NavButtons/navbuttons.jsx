@@ -1,7 +1,7 @@
 import propTypes from "prop-types"
 import styled from 'styled-components'
 
-const StyledButton =  styled.div`
+const StyledButton =  styled.a`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +20,7 @@ function NavButtons({svgCollection}){
     return(
         <nav>
             {svgCollection.map((icon, index)=>
-                <StyledButton key={index}>
+                <StyledButton key={index} href="#">
                     <img src={icon} alt="" height="32px"/>
                 </StyledButton>
             )}

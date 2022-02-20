@@ -6,7 +6,7 @@ import { getUser } from '../../services/getData'
 import LineChart from '../Dashboard/Charts/lineChart'
 import BarChart from '../Dashboard/Charts/barChart'
 import RadarChart from '../Dashboard/Charts/radarChart'
-import PieChart from '../Dashboard/Charts/pieChart'
+import RadialChart from './Charts/radialChart'
 import Nutrients from './Nutrients/nutrients'
 
 const DashboardContainer =  styled.section`
@@ -16,7 +16,6 @@ const DashboardContainer =  styled.section`
 `
 
 const Title =  styled.p`
-    font-family: 'roboto', sans-serif;
     font-weight: 500;
     font-size: 48px;
     margin-bottom: 41px;
@@ -27,7 +26,6 @@ const Name =  styled.span`
 `
 
 const Text = styled.p`
-    font-family: 'roboto', sans-serif;
     font-weight: 500;
     font-size: 18px;
     margin-bottom: 77px;
@@ -45,22 +43,30 @@ const DataContainer = styled.div`
     "BarChart BarChart BarChart Nutrient"
     "BarChart BarChart BarChart Nutrient"
     ". . . Nutrient"
-    "LineChart RadarChart PieChart Nutrient"
-    "LineChart RadarChart PieChart Nutrient"
-    "LineChart RadarChart PieChart Nutrient";
+    "LineChart RadarChart radialChart Nutrient"
+    "LineChart RadarChart radialChart Nutrient"
+    "LineChart RadarChart radialChart Nutrient";
     
     .lineChart { grid-area: LineChart;background-color:#FBFBFB; border-radius: 5px; }
     .nutrients { grid-area: Nutrient;}
     .barChart { grid-area: BarChart;background-color:#FBFBFB; border-radius: 5px; }
     .radarChart { grid-area: RadarChart;background-color:#FBFBFB; border-radius: 5px; }
-    .pieChart { grid-area: PieChart;background-color:#FBFBFB; border-radius: 5px; }
+    .radialChart { grid-area: radialChart;background-color:#FBFBFB; border-radius: 5px; }
 `
-
+/**
+ * Component for main content, dynamicaly filled with user data
+ * @component
+ * 
+ */
 function Dashboard(){
     
     const [userData, setUserData] = useState(null)
     
     useEffect(()=>{
+        /**
+         * fetch user info from USER_MAIN_DATA and store it into component state
+         * @async
+         */ 
         const fetchUserDatas = async () => {
             const data = await getUser()
             setUserData(data)
@@ -82,7 +88,7 @@ function Dashboard(){
                 <BarChart />
                 <LineChart />
                 <RadarChart />
-                <PieChart data={[{'score': userData.score}, {'score': 1- userData.score}]}/>
+                <RadialChart data={[{'score':userData.score}]}/>
                 <Nutrients data={userData.keyData}/>
             </DataContainer>
         </DashboardContainer>

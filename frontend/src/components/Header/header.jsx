@@ -18,7 +18,6 @@ const Logo = styled.img`
 `
 
 const NavList = styled.ul`
-    font-family: 'roboto', sans-serif;
     font-weight: 500;
     font-size: 24px;
     display: flex;
@@ -29,8 +28,12 @@ const NavBar = styled.nav`
     flex-grow: 1;
 `
 
+/**
+ * Component for showing header and nav menu
+ * @component
+ * 
+ */
 function Header(){
-    
     return(
         <StyledHeader>
             <Logo src={logo} alt="logo de sportsee"/>

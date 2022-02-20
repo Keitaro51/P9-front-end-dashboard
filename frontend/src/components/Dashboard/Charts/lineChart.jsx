@@ -4,7 +4,11 @@ import { LineChart as Chart, Line, XAxis, Tooltip, ResponsiveContainer } from 'r
 
 import { getAverageSession } from '../../../services/getData'
 
-
+/**
+ * Component for showing user average session time on week, represented with line chart
+ * @component
+ * 
+ */
 function LineChart(){
     
     const days = ["L", "M", "M", "J", "V", "S", "D"]
@@ -12,6 +16,10 @@ function LineChart(){
     const [userAverageSession, setUserAverageSession] = useState(null)
 
     useEffect(()=>{
+        /**
+         * fetch user info from USER_AVERAGE_SESSIONS and store it into component state
+         * @async
+         */
         const fetchUserAverageSession = async () => {
             const data = await getAverageSession()
             setUserAverageSession(data)
