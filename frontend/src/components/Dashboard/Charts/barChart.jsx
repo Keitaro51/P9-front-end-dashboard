@@ -8,7 +8,9 @@ import { getActivity } from '../../../services/getData'
 const Title =  styled.h1`
     font-weight: 500;
     font-size: 15px;
-    padding:10px;
+    position: absolute;
+    top: 20px;
+    left: 40px;
 `
 /**
  * Component for showing user activity, represented with bar chart
@@ -42,15 +44,10 @@ function BarChart(){
      * @param {string} unit unitée de mesure 
      * @returns {HTMLElement} 
      */
-    const renderLegendText = (unit) => {
-        if(unit === "kilogram"){
-            return <span> Poids (kg)</span>;
-        }
-        return <span> Calories brûlées (kCal)</span>;
+    const renderLegendText = (label) => {
+        return <span style={{color: '#74798C', fontWeight: '500', fontSize: '14px'}}> {label}</span>;
       };
-
-    const tooltipStyle = {background: "#E60000", color: "white", lineHeight:"24px", padding:"17px"}
-    
+   
     /**
      * Custom tooltip on chart mousehover
      * @param {{active:boolean, payload:array}} [] tooltip state
@@ -70,26 +67,32 @@ function BarChart(){
 
     return(
         //TODO ResponsiveContainer
-        <div className="barChart"> 
+        <div className="barChart" style={{position: 'relative', backgroundColor: '#FBFBFB'}}> 
             <Title>Activité quotidienne</Title>
             <Chart width={835} 
-                height={290} 
+                height={320} 
                 data={userActivity} 
                 margin={{
-                top: 5,
+                top: 50,
                 right: 30,
-                left: 20,
-                bottom: 5,
+                left: 40,
+                bottom: 0,
                 }}
                 barSize={7}
+                barGap={8}
                 >
-                <Legend verticalAlign='top' align="right" iconType="circle" iconSize="8" formatter={renderLegendText} wrapperStyle={{top: "-16px", right:"48px"}}/>
+                <Legend verticalAlign='top' align="right" iconType="circle" iconSize="8" formatter={renderLegendText} wrapperStyle={{top: "20px", right:"48px"}}/>
+                
                 <CartesianGrid strokeDasharray="2 2" vertical={false} />
-                <XAxis axisLine={{stroke: '#DEDEDE', strokeWidth: 1}} dataKey="day" tick={{ fill: '#9B9EAC' }} tickFormatter={(label) => `${label.slice(8)}`} tickLine={false}/ >
-                <YAxis tick={{ fill: '#9B9EAC' }} orientation="right" axisLine={false} tickLine={false}/>
-                <Tooltip cursor={{ fill: 'rgba(196, 196, 196, 0.5)'}} content={<CustomTooltip/>} wrapperStyle={tooltipStyle}/>
-                <Bar dataKey="kilogram" fill="#282D30" />
-                <Bar dataKey="calories" fill="#E60000" />
+                
+                <XAxis axisLine={{stroke: '#DEDEDE', strokeWidth: 1}} dataKey="day" tick={{ fill: '#9B9EAC', fontSize: '14px', fontWeight: '500'  }} tickFormatter={(label) => `${label.slice(8)}`} tickLine={false}/ >
+                
+                <YAxis tick={{ fill: '#9B9EAC', fontSize: '14px', fontWeight: '500' }} orientation="right" axisLine={false} tickLine={false}/>
+                
+                <Tooltip cursor={{ fill: 'rgba(196, 196, 196, 0.5)'}} content={<CustomTooltip/>} wrapperStyle={{background: "#E60000", color: "white", lineHeight:"24px", padding:"17px"}}/>
+                
+                <Bar dataKey="kilogram" fill="#282D30" name="Poids (kg)" radius={[3, 3, 0, 0]}/>
+                <Bar dataKey="calories" fill="#E60000" name="Calories brûlées (kCal)" radius={[3, 3, 0, 0]}/>
             </Chart>
         </div>
     )

@@ -9,7 +9,7 @@ import { RadialBarChart  as Chart, RadialBar , PolarAngleAxis,  ResponsiveContai
 function RadialChart({ data }){
   
     return(
-        <div className="radialChart">
+        <div className="radialChart" style={{background: "#FBFBFB"}}>
           <h1>Score</h1>
           <Chart 
             width={258} 
