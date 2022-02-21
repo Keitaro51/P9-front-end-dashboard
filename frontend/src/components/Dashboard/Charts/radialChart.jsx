@@ -1,6 +1,13 @@
 import propTypes from "prop-types"
+import styled from 'styled-components'
 import { RadialBarChart  as Chart, RadialBar , PolarAngleAxis,  ResponsiveContainer } from 'recharts';
   
+
+const Container =  styled.div`
+  background: #FBFBFB;
+  border-radius: 5px;
+`
+
 /**
  * Chart component for main content, dynamicaly filled with user daily score, represented with radial chart
  * @component
@@ -9,7 +16,7 @@ import { RadialBarChart  as Chart, RadialBar , PolarAngleAxis,  ResponsiveContai
 function RadialChart({ data }){
   
     return(
-        <div className="radialChart" style={{background: "#FBFBFB"}}>
+        <Container className="radialChart" >
           <h1>Score</h1>
           <Chart 
             width={258} 
@@ -27,7 +34,7 @@ function RadialChart({ data }){
               tick={false}
             />
           </Chart>
-        </div>
+        </Container>
     )
 }
 /*TODO

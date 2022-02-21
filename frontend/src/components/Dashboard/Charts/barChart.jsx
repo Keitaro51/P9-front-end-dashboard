@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-
 import { BarChart as Chart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 import { getActivity } from '../../../services/getData'
+
+const Container =  styled.div`
+    position: relative;
+    background-color: #FBFBFB;
+    border-radius: 5px;
+`
 
 const Title =  styled.h1`
     font-weight: 500;
@@ -67,7 +72,7 @@ function BarChart(){
 
     return(
         //TODO ResponsiveContainer
-        <div className="barChart" style={{position: 'relative', backgroundColor: '#FBFBFB'}}> 
+        <Container className="barChart"> 
             <Title>Activité quotidienne</Title>
             <Chart width={835} 
                 height={320} 
@@ -94,7 +99,7 @@ function BarChart(){
                 <Bar dataKey="kilogram" fill="#282D30" name="Poids (kg)" radius={[3, 3, 0, 0]}/>
                 <Bar dataKey="calories" fill="#E60000" name="Calories brûlées (kCal)" radius={[3, 3, 0, 0]}/>
             </Chart>
-        </div>
+        </Container>
     )
 }
 

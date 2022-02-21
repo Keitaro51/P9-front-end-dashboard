@@ -47,11 +47,11 @@ const DataContainer = styled.div`
     "LineChart RadarChart radialChart Nutrient"
     "LineChart RadarChart radialChart Nutrient";
     
-    .lineChart { grid-area: LineChart; border-radius: 5px; }
-    .nutrients { grid-area: Nutrient;}
-    .barChart { grid-area: BarChart; border-radius: 5px; }
-    .radarChart { grid-area: RadarChart; border-radius: 5px; }
-    .radialChart { grid-area: radialChart; border-radius: 5px; }
+    .lineChart { grid-area: LineChart }
+    .nutrients { grid-area: Nutrient }
+    .barChart { grid-area: BarChart }
+    .radarChart { grid-area: RadarChart }
+    .radialChart { grid-area: radialChart }
 `
 /**
  * Component for main content, dynamicaly filled with user data
