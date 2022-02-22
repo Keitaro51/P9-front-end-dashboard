@@ -4,6 +4,8 @@ import { LineChart as Chart, Line, XAxis, YAxis, Tooltip, Rectangle, ResponsiveC
 
 import { getAverageSession } from '../../../services/getData'
 
+const days = ["L", "M", "M", "J", "V", "S", "D"]
+
 const Container =  styled.div`
     position: relative;
     background: #FF0000;
@@ -20,12 +22,24 @@ const Title = styled.h1`
     color: white;
 `
 
+const TooltipWrapperStyle = styled.div`
+    font-size:8px; 
+    font-weight: 500; 
+    color: black; 
+    background: white;
+    width:40px;
+    height:25px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+`
+
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
         return (
-            <div>
+            <TooltipWrapperStyle>
                 <p> {`${payload[0].value}min`}</p>
-            </div>
+            </TooltipWrapperStyle>
             );
     }
     return null;
@@ -43,7 +57,6 @@ const CustomTooltip = ({ active, payload }) => {
         <Rectangle
         fill="black"
         opacity="0.1"
-        stroke="green"
         x={ x }
         width={ width +30 }
         height= {263}
@@ -57,8 +70,6 @@ const CustomTooltip = ({ active, payload }) => {
  * 
  */
 function LineChart(){
-    
-    const days = ["L", "M", "M", "J", "V", "S", "D"]
     
     const [userAverageSession, setUserAverageSession] = useState(null)
 
@@ -91,14 +102,29 @@ function LineChart(){
                     top: 50,
                     right: 30,
                     left: 20,
-                    bottom: 5,
-                }}
-            >
-                <XAxis dataKey="day" axisLine={false} stroke="#FFF" tickLine={false} tickFormatter={(_, index) => days[index]}/>
-                <YAxis type="number" domain={['dataMin - 10', 'dataMax + 10']} hide={true}/>
-                <Tooltip cursor={<CustomCursor />} wrapperStyle={{fontSize:'8px', fontWeight: '500', color: 'black', background: 'white', width:'40px', height:'25px', display: 'flex', justifyContent: 'center', alignItems: 'center'}} content={<CustomTooltip/>}/>
-                
-                <Line type="natural" dataKey="sessionLength" strokeWidth={2} stroke="#FFF" dot={false} activeDot={{ r: 4, stroke: 'rgba(255, 255, 255, 0.5)', strokeWidth: 5 }}  />
+                    bottom: 5
+                }}>
+
+                <XAxis 
+                    dataKey="day" 
+                    axisLine={false} 
+                    stroke="#FFF" 
+                    tickLine={false} 
+                    tickFormatter={(_, index) => days[index]}/>
+                <YAxis 
+                    type="number" 
+                    domain={['dataMin - 10', 'dataMax + 10']} 
+                    hide={true}/>
+                <Tooltip 
+                    cursor={<CustomCursor />} 
+                    content={<CustomTooltip/>}/>
+                <Line 
+                    type="natural" 
+                    dataKey="sessionLength" 
+                    strokeWidth={2} 
+                    stroke="#FFF" 
+                    dot={false} 
+                    activeDot={{ r: 4, stroke: 'rgba(255, 255, 255, 0.5)', strokeWidth: 5 }} />
             </Chart>
         </Container>
     )

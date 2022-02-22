@@ -88,7 +88,7 @@ function Dashboard(){
                 <BarChart />
                 <LineChart />
                 <RadarChart />
-                <RadialChart data={[{'score':userData.score}]}/>
+                <RadialChart data={[{'score':userData.todayScore}]}/>
                 <Nutrients data={userData.keyData}/>
             </DataContainer>
         </DashboardContainer>
