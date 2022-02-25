@@ -9,12 +9,21 @@ const StyledHeader =  styled.header`
     height: 91px;
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
+    :hover + main .sidebar {
+        display: flex;
+    }
+    @media (max-width: 1024px) {
+        height: 60px;
+    }
 `
 
 const Logo = styled.img`
     width: 178px;
     margin: 18px 0 12px 28px;
+    @media (max-width: 1024px) {
+        width: 130px;
+    }
 `
 
 const NavList = styled.ul`
@@ -22,6 +31,9 @@ const NavList = styled.ul`
     font-size: 24px;
     display: flex;
     justify-content: space-around;
+    @media (max-width: 1024px) {
+        font-size: 18px;
+    }
 `
 
 const NavBar = styled.nav`

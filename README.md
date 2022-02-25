@@ -1,6 +1,8 @@
-![createBy](https://img.shields.io/static/v1.svg?label=CREATE%20BY&message=ROMAIN%20CHARLOT&color=success)
-![createBy](https://img.shields.io/static/v1.svg?label=MADE%20WITH&message=React.js&logo=React&color=blue)
-![createBy](https://img.shields.io/static/v1.svg?label=MADE%20WITH&message=Javascript.js&logo=Javascript&color=yellow)
+![createBy](https://img.shields.io/static/v1.svg?label=CREATED%20BY&message=ROMAIN%20CHARLOT&color=success)
+![madeWith](https://img.shields.io/static/v1.svg?label=MADE%20WITH&message=React.js%20V7.0.2&logo=React&color=blue)
+![madeWith](https://img.shields.io/static/v1.svg?label=MADE%20WITH&message=Recharts.js&color=yellow)
+![madeWith](https://img.shields.io/static/v1.svg?label=STYLED%20WITH&message=Recharts.js&logo=styled-components&color=DB7093)
+
 
 # Project OC - Front-end React Dashboard
 

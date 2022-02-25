@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Dashboard/Charts/lineChart.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Dashboard/Charts/lineChart.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { LineChart as Chart, Line, XAxis, YAxis, Tooltip, Rectangle, ResponsiveContainer } from 'recharts';
+
+import { getAverageSession } from '../../../services/getData'
+
+const days = ["L", "M", "M", "J", "V", "S", "D"]
+
+const Container =  styled.div`
+    position: relative;
+    background: #FF0000;
+    border-radius: 5px;
+    height: 263px;
+    width: 258px;
+`
+const Title = styled.h1`
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+`
+
+const TooltipWrapperStyle = styled.div`
+    font-size:8px; 
+    font-weight: 500; 
+    color: black; 
+    background: white;
+    width:40px;
+    height:25px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+`
+
+const CustomTooltip = ({ active, payload }) => {
+    if (active &amp;&amp; payload &amp;&amp; payload.length) {
+        return (
+            &lt;TooltipWrapperStyle>
+                &lt;p> {`${payload[0].value}min`}&lt;/p>
+            &lt;/TooltipWrapperStyle>
+            );
+    }
+    return null;
+}
+
+/**
+ * Custom area cursor shape on right side of active dot
+ * @param {*} props activeDot props
+ * @returns {HTMLElement} area
+ */
+    const CustomCursor = (props) => {
+    const { points, width } = props;
+    const { x } = points[0];
+    return (
+        &lt;Rectangle
+        fill="black"
+        opacity="0.1"
+        x={ x }
+        width={ width +30 }
+        height= {263}
+        />
+    );
+};
+
+/**
+ * Component for showing user average session time on week, represented with line chart
+ * @component
+ * 
+ */
+function LineChart(){
+    
+    const [userAverageSession, setUserAverageSession] = useState(null)
+
+    useEffect(()=>{
+        /**
+         * fetch user info from USER_AVERAGE_SESSIONS and store it into component state
+         * @async
+         */
+        const fetchUserAverageSession = async () => {
+            const data = await getAverageSession()
+            setUserAverageSession(data)
+        }
+        fetchUserAverageSession()
+    },[])
+    
+    if(!userAverageSession){
+        return(
+            &lt;div>LOADING AVERAGE SESSION CHART&lt;/div>
+        )
+    }
+
+    return(
+        &lt;Container className="lineChart">
+            &lt;Title>Durée moyenne des &lt;br/> sessions&lt;/Title>
+            &lt;Chart
+                width={258} 
+                height={263}
+                data={userAverageSession.sessions}
+                margin={{
+                    top: 50,
+                    right: 30,
+                    left: 20,
+                    bottom: 5
+                }}>
+
+                &lt;XAxis 
+                    dataKey="day" 
+                    axisLine={false} 
+                    stroke="#FFF" 
+                    tickLine={false} 
+                    tickFormatter={(_, index) => days[index]}/>
+                &lt;YAxis 
+                    type="number" 
+                    domain={['dataMin - 10', 'dataMax + 10']} 
+                    hide={true}/>
+                &lt;Tooltip 
+                    cursor={&lt;CustomCursor />} 
+                    content={&lt;CustomTooltip/>}/>
+                &lt;Line 
+                    type="natural" 
+                    dataKey="sessionLength" 
+                    strokeWidth={2} 
+                    stroke="#FFF" 
+                    dot={false} 
+                    activeDot={{ r: 4, stroke: 'rgba(255, 255, 255, 0.5)', strokeWidth: 5 }} />
+            &lt;/Chart>
+        &lt;/Container>
+    )
+}
+
+export default LineChart</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BarChart">BarChart</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#formatData">formatData</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getActivity">getActivity</a></li><li><a href="global.html#getAverageSession">getAverageSession</a></li><li><a href="global.html#getPerformance">getPerformance</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#handleResponse">handleResponse</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#LineChart">LineChart</a></li><li><a href="global.html#Nutrients">Nutrients</a></li><li><a href="global.html#RadarChart">RadarChart</a></li><li><a href="global.html#RadialChart">RadialChart</a></li><li><a href="global.html#Sidebar">Sidebar</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Fri Feb 25 2022 14:34:00 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

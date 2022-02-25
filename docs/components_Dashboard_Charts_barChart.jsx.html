@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Dashboard/Charts/barChart.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Dashboard/Charts/barChart.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { BarChart as Chart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+import { getActivity } from '../../../services/getData'
+
+const Container =  styled.div`
+    position: relative;
+    background-color: #FBFBFB;
+    border-radius: 5px;
+`
+
+const Title =  styled.h1`
+    font-weight: 500;
+    font-size: 15px;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+`
+/**
+ * Component for showing user activity, represented with bar chart
+ * @component
+ * 
+ */
+function BarChart(){
+    
+    const [userActivity, setUserActivity] = useState(null)
+
+    useEffect(()=>{
+        /**
+         * fetch user info from USER_ACTIVITY and store it into component state
+         * @async
+         */
+        const fetchUserActivity = async () => {
+            const data = await getActivity()
+            setUserActivity(data.sessions)
+        }
+        fetchUserActivity()
+    },[])
+    
+    if(!userActivity){
+        return(
+            &lt;div>LOADING ACTIVITY CHART&lt;/div>
+        )
+    }
+    
+    /**
+     * Return french translation depending on unit for chart legend
+     * @param {string} unit unitée de mesure 
+     * @returns {HTMLElement} 
+     */
+    const renderLegendText = (label) => {
+        return &lt;span style={{color: '#74798C', fontWeight: '500', fontSize: '14px'}}> {label}&lt;/span>;
+      };
+   
+    /**
+     * Custom tooltip on chart mousehover
+     * @param {{active:boolean, payload:array}} [] tooltip state
+     * @returns {HTMLElement|null} 
+     */
+    const CustomTooltip = ({ active, payload }) => {
+        if (active &amp;&amp; payload &amp;&amp; payload.length) {
+          return (
+            &lt;div>
+              &lt;p> {`${payload[0].value}kg`}&lt;/p>
+              &lt;p> {`${payload[1].value}Kcal`}&lt;/p>
+            &lt;/div>
+          );
+        }
+        return null;
+    }
+
+    return(
+        &lt;Container className="barChart"> 
+            &lt;Title>Activité quotidienne&lt;/Title>
+            &lt;Chart width={835} 
+                height={320} 
+                data={userActivity} 
+                margin={{
+                top: 50,
+                right: 30,
+                left: 40,
+                bottom: 0,
+                }}
+                barSize={7}
+                barGap={8}
+                >
+                &lt;Legend verticalAlign='top' 
+                    align="right" 
+                    iconType="circle" 
+                    iconSize="8" 
+                    formatter={renderLegendText} 
+                    wrapperStyle={{top: "20px", right:"48px"}}/>
+                
+                &lt;CartesianGrid strokeDasharray="2 2" 
+                    vertical={false} />
+                
+                &lt;XAxis dataKey="day"
+                    axisLine={{stroke: '#DEDEDE', strokeWidth: 1}}
+                    tick={{ fill: '#9B9EAC', fontSize: '14px', fontWeight: '500'  }}
+                    tickFormatter={(label) => `${label.slice(8)}`}
+                    tickLine={false}/ >
+                
+                &lt;YAxis axisLine={false} 
+                    orientation="right"
+                    tick={{ fill: '#9B9EAC', fontSize: '14px', fontWeight: '500' }}
+                    tickLine={false}/>
+                
+                &lt;Tooltip cursor={{ fill: 'rgba(196, 196, 196, 0.5)'}} 
+                    content={&lt;CustomTooltip/>} 
+                    wrapperStyle={{background: "#E60000", color: "white", lineHeight:"24px", padding:"17px"}}/>
+                
+                &lt;Bar dataKey="kilogram" 
+                    fill="#282D30" 
+                    name="Poids (kg)" 
+                    radius={[3, 3, 0, 0]}/>
+                &lt;Bar dataKey="calories" 
+                    fill="#E60000" 
+                    name="Calories brûlées (kCal)" 
+                    radius={[3, 3, 0, 0]}/>
+            &lt;/Chart>
+        &lt;/Container>
+    )
+}
+
+export default BarChart</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BarChart">BarChart</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#formatData">formatData</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getActivity">getActivity</a></li><li><a href="global.html#getAverageSession">getAverageSession</a></li><li><a href="global.html#getPerformance">getPerformance</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#handleResponse">handleResponse</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#LineChart">LineChart</a></li><li><a href="global.html#Nutrients">Nutrients</a></li><li><a href="global.html#RadarChart">RadarChart</a></li><li><a href="global.html#RadialChart">RadialChart</a></li><li><a href="global.html#Sidebar">Sidebar</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Fri Feb 25 2022 14:34:00 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

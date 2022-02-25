@@ -1,4 +1,6 @@
-export const API_URL = 'http://localhost:3000'
+const PORT = 3000
+
+export const API_URL = `http://localhost:${PORT}`
 
 export const URL_GETUSER = API_URL + "/user"
 

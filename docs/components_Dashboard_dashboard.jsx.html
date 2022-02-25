@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Dashboard/dashboard.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Dashboard/dashboard.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useEffect, useState } from 'react'
+import styled from 'styled-components'
+
+import { getUser } from '../../services/getData'
+
+import LineChart from '../Dashboard/Charts/lineChart'
+import BarChart from '../Dashboard/Charts/barChart'
+import RadarChart from '../Dashboard/Charts/radarChart'
+import RadialChart from './Charts/radialChart'
+import Nutrients from './Nutrients/nutrients'
+
+const DashboardContainer =  styled.section`
+    padding: 68px 90px 88px 109px;
+    height: 777px;
+    width: 1122px;
+    @media (max-width: 1024px){
+        padding: 20px 0 0 30px;
+        width: 100vw;
+    }
+`
+
+const Title =  styled.p`
+    font-weight: 500;
+    font-size: 48px;
+    margin-bottom: 41px;
+    @media (max-width: 1024px){
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+`
+
+const Name =  styled.span`
+    color: red;
+`
+
+const Text = styled.p`
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 77px;
+    @media (max-width: 1024px){
+        margin-bottom: 25px;
+    }
+`
+
+const DataContainer = styled.div`
+    display: grid;
+    height: 613px;
+    gap: 0px 30px; 
+    grid-template-rows: 124px 39px 124px 39px 12.4px 111.6px 39px 124px;
+    grid-template-columns: 258px 258px 258px 258px;
+    grid-template-areas: 
+    "BarChart BarChart BarChart Nutrient"
+    "BarChart BarChart BarChart Nutrient"
+    "BarChart BarChart BarChart Nutrient"
+    "BarChart BarChart BarChart Nutrient"
+    ". . . Nutrient"
+    "LineChart RadarChart radialChart Nutrient"
+    "LineChart RadarChart radialChart Nutrient"
+    "LineChart RadarChart radialChart Nutrient";
+    
+    .lineChart { grid-area: LineChart }
+    .nutrients { grid-area: Nutrient }
+    .barChart { grid-area: BarChart }
+    .radarChart { grid-area: RadarChart }
+    .radialChart { grid-area: radialChart }
+
+    @media (max-width: 1024px){
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100vw;
+    }
+`
+/**
+ * Component for main content, dynamicaly filled with user data
+ * @component
+ * 
+ */
+function Dashboard(){
+    
+    const [userData, setUserData] = useState(null)
+    
+    useEffect(()=>{
+        /**
+         * fetch user info from USER_MAIN_DATA and store it into component state
+         * @async
+         */ 
+        const fetchUserDatas = async () => {
+            const data = await getUser()
+            setUserData(data)
+        }
+        fetchUserDatas()
+    },[])
+    
+    if(!userData){
+        return(
+            &lt;div>LOADING DATAS&lt;/div>
+        )
+    }
+
+    return(
+        &lt;DashboardContainer>
+            &lt;Title>Bonjour &lt;Name>{userData.userInfos.firstName}&lt;/Name>&lt;/Title>&lt;br/>
+            &lt;Text>Félicitation ! Vous avez explosé vos objectifs hier 👏&lt;/Text>
+            &lt;DataContainer>
+                &lt;BarChart />
+                &lt;LineChart />
+                &lt;RadarChart />
+                &lt;RadialChart data={[{'score':userData.todayScore}]}/>
+                &lt;Nutrients data={userData.keyData}/>
+            &lt;/DataContainer>
+        &lt;/DashboardContainer>
+    )
+}
+
+export default Dashboard</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BarChart">BarChart</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#findById">findById</a></li><li><a href="global.html#formatData">formatData</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getActivity">getActivity</a></li><li><a href="global.html#getAverageSession">getAverageSession</a></li><li><a href="global.html#getPerformance">getPerformance</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#handleResponse">handleResponse</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#LineChart">LineChart</a></li><li><a href="global.html#Nutrients">Nutrients</a></li><li><a href="global.html#RadarChart">RadarChart</a></li><li><a href="global.html#RadialChart">RadialChart</a></li><li><a href="global.html#Sidebar">Sidebar</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Fri Feb 25 2022 14:34:00 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

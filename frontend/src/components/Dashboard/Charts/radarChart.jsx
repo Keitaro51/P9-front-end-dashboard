@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Radar, RadarChart as Chart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from 'recharts';
+import { Radar, RadarChart as Chart, PolarGrid, PolarAngleAxis, ResponsiveContainer, PolarRadiusAxis } from 'recharts';
 
 import { getPerformance } from '../../../services/getData'
 
@@ -51,15 +51,31 @@ function RadarChart(){
             <div>LOADING PREFORMANCES CHART</div>
         )
     }
-    //FIXME tooltip show error. chart axis label rotated but not values
+    
     return(
         <Container className="radarChart">
-            <ResponsiveContainer width='100%' height='100%'>
-                <Chart background= "#FF0101" startAngle="-150" endAngle="210" outerRadius={90} width={258} height={263} data={userPerformance} fill="#FFF">
+            <ResponsiveContainer 
+                width='100%' 
+                height='100%'>
+                <Chart 
+                    data={userPerformance}
+                    background="#FF0101" 
+                    outerRadius={75}
+                    width={258} 
+                    height={263} 
+                    fill="#FFF" >
+                    <PolarRadiusAxis 
+                        tickCount={6} 
+                        axisLine={false} 
+                        tick={false} />
                     <PolarGrid />
-                    <Tooltip /> 
-                    <PolarAngleAxis dataKey="kind" tick={{fontSize:"12", fontWeight:"500"}}/>
-                    <Radar dataKey="value"  fill="#FF0101" fillOpacity={0.7} />
+                    <PolarAngleAxis 
+                        dataKey="kind" 
+                        tick={{fontSize:"12", fontWeight:"500"}}/>
+                    <Radar 
+                        dataKey="value" 
+                        fill="#FF0101" 
+                        fillOpacity={0.7} />
                 </Chart>
             </ResponsiveContainer>
         </Container>

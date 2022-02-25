@@ -16,6 +16,17 @@ const Section =  styled.section`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 1024px) {
+        position: absolute;
+        display: none;
+        height: 45px;
+        width: 100vw;
+        flex-direction: row;
+        justify-content: space-around;
+        :hover{
+            display: flex;
+        }
+    }
 `
 
 const StyledParagraph =  styled.p`
@@ -24,7 +35,11 @@ const StyledParagraph =  styled.p`
     font-weight: 500;
     font-size: 12px;
     margin-bottom: 128px;
-    width: max-content
+    width: max-content;
+    @media (max-width: 1024px) {
+        transform: rotate(0deg);
+        margin-bottom: 0px;
+    }
 `
 /**
  * Component for showing sidebar nav menu

@@ -71,7 +71,6 @@ function BarChart(){
     }
 
     return(
-        //TODO ResponsiveContainer
         <Container className="barChart"> 
             <Title>Activité quotidienne</Title>
             <Chart width={835} 
@@ -86,18 +85,39 @@ function BarChart(){
                 barSize={7}
                 barGap={8}
                 >
-                <Legend verticalAlign='top' align="right" iconType="circle" iconSize="8" formatter={renderLegendText} wrapperStyle={{top: "20px", right:"48px"}}/>
+                <Legend verticalAlign='top' 
+                    align="right" 
+                    iconType="circle" 
+                    iconSize="8" 
+                    formatter={renderLegendText} 
+                    wrapperStyle={{top: "20px", right:"48px"}}/>
                 
-                <CartesianGrid strokeDasharray="2 2" vertical={false} />
+                <CartesianGrid strokeDasharray="2 2" 
+                    vertical={false} />
                 
-                <XAxis axisLine={{stroke: '#DEDEDE', strokeWidth: 1}} dataKey="day" tick={{ fill: '#9B9EAC', fontSize: '14px', fontWeight: '500'  }} tickFormatter={(label) => `${label.slice(8)}`} tickLine={false}/ >
+                <XAxis dataKey="day"
+                    axisLine={{stroke: '#DEDEDE', strokeWidth: 1}}
+                    tick={{ fill: '#9B9EAC', fontSize: '14px', fontWeight: '500'  }}
+                    tickFormatter={(label) => `${label.slice(8)}`}
+                    tickLine={false}/ >
                 
-                <YAxis tick={{ fill: '#9B9EAC', fontSize: '14px', fontWeight: '500' }} orientation="right" axisLine={false} tickLine={false}/>
+                <YAxis axisLine={false} 
+                    orientation="right"
+                    tick={{ fill: '#9B9EAC', fontSize: '14px', fontWeight: '500' }}
+                    tickLine={false}/>
                 
-                <Tooltip cursor={{ fill: 'rgba(196, 196, 196, 0.5)'}} content={<CustomTooltip/>} wrapperStyle={{background: "#E60000", color: "white", lineHeight:"24px", padding:"17px"}}/>
+                <Tooltip cursor={{ fill: 'rgba(196, 196, 196, 0.5)'}} 
+                    content={<CustomTooltip/>} 
+                    wrapperStyle={{background: "#E60000", color: "white", lineHeight:"24px", padding:"17px"}}/>
                 
-                <Bar dataKey="kilogram" fill="#282D30" name="Poids (kg)" radius={[3, 3, 0, 0]}/>
-                <Bar dataKey="calories" fill="#E60000" name="Calories brûlées (kCal)" radius={[3, 3, 0, 0]}/>
+                <Bar dataKey="kilogram" 
+                    fill="#282D30" 
+                    name="Poids (kg)" 
+                    radius={[3, 3, 0, 0]}/>
+                <Bar dataKey="calories" 
+                    fill="#E60000" 
+                    name="Calories brûlées (kCal)" 
+                    radius={[3, 3, 0, 0]}/>
             </Chart>
         </Container>
     )

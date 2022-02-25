@@ -12,6 +12,14 @@ const StyledButton =  styled.a`
     margin-bottom: 20px;
     &:first-child {
         margin-top:256px;
+        @media (max-width: 1024px) {
+            margin-top:0;
+        }
+    };
+    @media (max-width: 1024px) {
+        margin-right: 20px;
+        height: 32px;
+        width: 32px;
     }
 `
 

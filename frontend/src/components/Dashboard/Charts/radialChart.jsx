@@ -67,11 +67,7 @@ function RadialChart({ data }){
         </Container>
     )
 }
-/*TODO
-<text x="50%" y="50%" dy={16} >
-{`${100 * data[0].score}%\nde votre objectif`}
-</text>
-*/
+
 RadialChart.propTypes = {
   data: propTypes.arrayOf(
     propTypes.shape({

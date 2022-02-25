@@ -6,7 +6,7 @@ import { get } from '../helper/fetchWrapper'
 /**
  * get user main data from api or mock data
  *
- * @return  {(object|promise)}  mock or API data
+ * @return  {(object)}  mock or API data
  */
 const getUser = () => {
     if(DATA_SRC === 'API'){
@@ -18,7 +18,7 @@ const getUser = () => {
 /**
  * get user activity data from api or mock data
  *
- * @return  {(object|promise)}  mock or API data
+ * @return  {object}  mock or API data
  */
 const getActivity = () => {
     if(DATA_SRC === 'API'){
@@ -30,7 +30,7 @@ const getActivity = () => {
 /**
  * get user average sessions data from api or mock data
  *
- * @return  {(object|promise)}  mock or API data
+ * @return  {object}  mock or API data
  */
 const getAverageSession = () => {
     if(DATA_SRC === 'API'){
@@ -42,7 +42,7 @@ const getAverageSession = () => {
 /**
  * get user performance data from api or mock data
  *
- * @return  {(object|promise)}  mock or API data
+ * @return  {object}  mock or API data
  */
 const getPerformance = () => {
     if(DATA_SRC === 'API'){      

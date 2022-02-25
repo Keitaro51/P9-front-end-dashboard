@@ -1,7 +1,18 @@
-*{
+body *{
     box-sizing: border-box;
     font-family: 'roboto', sans-serif;
 }
 main{
     display: flex;
+}
+@media (max-width: 1024px) {
+    main{
+        display: block;
+    }
+    .sidebar nav{
+        display: flex;
+    }
+    .sidebar img{
+        height: 16px;
+    }
 }
