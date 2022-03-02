@@ -13,7 +13,7 @@ const DashboardContainer =  styled.section`
     padding: 68px 90px 88px 109px;
     height: 777px;
     width: 1122px;
-    @media (max-width: 1024px){
+    @media (max-width: 1439px){
         padding: 20px 0 0 30px;
         width: 100vw;
     }
@@ -23,7 +23,7 @@ const Title =  styled.p`
     font-weight: 500;
     font-size: 48px;
     margin-bottom: 41px;
-    @media (max-width: 1024px){
+    @media (max-width: 1439px){
         margin-bottom: 10px;
         font-size: 24px;
     }
@@ -37,7 +37,7 @@ const Text = styled.p`
     font-weight: 500;
     font-size: 18px;
     margin-bottom: 77px;
-    @media (max-width: 1024px){
+    @media (max-width: 1439px){
         margin-bottom: 25px;
     }
 `
@@ -64,7 +64,7 @@ const DataContainer = styled.div`
     .radarChart { grid-area: RadarChart }
     .radialChart { grid-area: radialChart }
 
-    @media (max-width: 1024px){
+    @media (max-width: 1439px){
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;

@@ -16,7 +16,7 @@ const Section =  styled.section`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    @media (max-width: 1024px) {
+    @media (max-width: 1439px) {
         position: absolute;
         display: none;
         height: 45px;
@@ -36,7 +36,7 @@ const StyledParagraph =  styled.p`
     font-size: 12px;
     margin-bottom: 128px;
     width: max-content;
-    @media (max-width: 1024px) {
+    @media (max-width: 1439px) {
         transform: rotate(0deg);
         margin-bottom: 0px;
     }

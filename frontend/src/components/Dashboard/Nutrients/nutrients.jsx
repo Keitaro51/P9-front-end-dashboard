@@ -11,9 +11,10 @@ import cheeseburger from '../../../assets/cheeseburger.svg'
 const Container =  styled.div`
     width: 258px;
     heigth: 125px;
-    @media (max-width: 1024px){
+    @media (max-width: 1439px){
         display: flex;
         flex-direction: row;
+        flex-basis: 100%;
         
     }
 `

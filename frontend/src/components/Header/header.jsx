@@ -13,7 +13,7 @@ const StyledHeader =  styled.header`
     :hover + main .sidebar {
         display: flex;
     }
-    @media (max-width: 1024px) {
+    @media (max-width: 1439px) {
         height: 60px;
     }
 `
@@ -21,7 +21,7 @@ const StyledHeader =  styled.header`
 const Logo = styled.img`
     width: 178px;
     margin: 18px 0 12px 28px;
-    @media (max-width: 1024px) {
+    @media (max-width: 1439px) {
         width: 130px;
     }
 `
@@ -31,7 +31,7 @@ const NavList = styled.ul`
     font-size: 24px;
     display: flex;
     justify-content: space-around;
-    @media (max-width: 1024px) {
+    @media (max-width: 1439px) {
         font-size: 18px;
     }
 `
