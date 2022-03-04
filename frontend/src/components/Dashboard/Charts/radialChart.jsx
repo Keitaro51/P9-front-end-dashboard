@@ -1,7 +1,7 @@
 import propTypes from "prop-types"
 import styled from 'styled-components'
-import { RadialBarChart  as Chart, RadialBar , PolarAngleAxis,  ResponsiveContainer } from 'recharts';
-  
+import { RadialBarChart  as Chart, RadialBar , PolarAngleAxis } from 'recharts';
+
 const Container =  styled.div`
   position: relative;
   background: #FBFBFB;
@@ -11,6 +11,7 @@ const Container =  styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: end;
 `
 
 const Title = styled.h1`

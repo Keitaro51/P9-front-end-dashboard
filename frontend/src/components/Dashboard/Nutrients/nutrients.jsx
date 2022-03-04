@@ -14,6 +14,7 @@ const Container =  styled.div`
     @media (max-width: 1439px){
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         flex-basis: 100%;
         
     }

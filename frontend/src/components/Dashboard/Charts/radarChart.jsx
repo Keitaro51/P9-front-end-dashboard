@@ -11,6 +11,7 @@ const Container =  styled.div`
     border-radius: 5px;
     width: 258px;
     height: 263px;
+    align-self: end;
 `
 
 /**

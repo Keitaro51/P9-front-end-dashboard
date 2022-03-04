@@ -1,6 +1,7 @@
 body *{
     box-sizing: border-box;
     font-family: 'roboto', sans-serif;
+    overflow: hidden;
 }
 main{
     display: flex;

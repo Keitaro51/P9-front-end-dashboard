@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { BarChart as Chart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart as Chart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 import { getActivity } from '../../../services/getData'
 
 const Container =  styled.div`
     position: relative;
     background-color: #FBFBFB;
+    
     border-radius: 5px;
     @media (max-width: 1439px) {
         flex-basis: 100%;
+        .recharts-wrapper {
+            margin : 0 auto;
+          }
     }
 `
 

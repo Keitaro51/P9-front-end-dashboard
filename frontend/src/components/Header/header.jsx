@@ -10,9 +10,6 @@ const StyledHeader =  styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    :hover + main .sidebar {
-        display: flex;
-    }
     @media (max-width: 1439px) {
         height: 60px;
     }

@@ -17,15 +17,14 @@ const Section =  styled.section`
     justify-content: space-between;
     align-items: center;
     @media (max-width: 1439px) {
-        position: absolute;
-        display: none;
-        height: 45px;
-        width: 100vw;
+        position: fixed;
+        padding: 35px 0 35px 0;
+        bottom: 0;
+        height: 60px;
+        z-index : 1;
+        width: 100%;
         flex-direction: row;
         justify-content: space-around;
-        :hover{
-            display: flex;
-        }
     }
 `
 

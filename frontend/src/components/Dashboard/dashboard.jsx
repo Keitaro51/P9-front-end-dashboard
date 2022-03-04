@@ -10,12 +10,11 @@ import RadialChart from './Charts/radialChart'
 import Nutrients from './Nutrients/nutrients'
 
 const DashboardContainer =  styled.section`
-    padding: 68px 90px 88px 109px;
-    height: 777px;
-    width: 1122px;
+    padding: 68px 90px 0 109px;
     @media (max-width: 1439px){
         padding: 20px 0 0 30px;
-        width: 100vw;
+        margin-bottom: 25px;
+        width: 100%;
     }
 `
 
@@ -44,7 +43,6 @@ const Text = styled.p`
 
 const DataContainer = styled.div`
     display: grid;
-    height: 613px;
     gap: 0px 30px; 
     grid-template-rows: 124px 39px 124px 39px 12.4px 111.6px 39px 124px;
     grid-template-columns: 258px 258px 258px 258px;
@@ -68,7 +66,11 @@ const DataContainer = styled.div`
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        width: 100vw;
+        justify-content: space-between;
+        width: 90%;
+        & div{
+            margin-bottom: 10px;
+        }
     }
 `
 /**

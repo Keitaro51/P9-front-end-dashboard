@@ -12,6 +12,10 @@ const Container =  styled.div`
     border-radius: 5px;
     height: 263px;
     width: 258px;
+    align-self: end;
+    @media (max-width: 1439px){
+        
+    }
 `
 const Title = styled.h1`
     position: absolute;

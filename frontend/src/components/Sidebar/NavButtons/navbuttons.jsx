@@ -18,6 +18,7 @@ const StyledButton =  styled.a`
     };
     @media (max-width: 1439px) {
         margin-right: 20px;
+        margin-bottom: 0;
         height: 32px;
         width: 32px;
     }
